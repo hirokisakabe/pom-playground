@@ -13,6 +13,7 @@ const DEBOUNCE_MS = 500;
 export function AppLayout() {
   const [xmlValue, setXmlValue] = useState(DEFAULT_XML);
   const [svgs, setSvgs] = useState<string[]>([]);
+  const [previewXml, setPreviewXml] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -61,6 +62,7 @@ export function AppLayout() {
       }
 
       setSvgs(data.svgs);
+      setPreviewXml(xmlValue);
       setCurrentPage(1);
     } catch (e) {
       if (e instanceof DOMException && e.name === "AbortError") {
@@ -111,6 +113,7 @@ export function AppLayout() {
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 p-4">
         <XmlEditor value={xmlValue} onChange={setXmlValue} />
         <SlidePreview
+          xml={previewXml}
           svgs={svgs}
           isLoading={isLoading}
           error={error}

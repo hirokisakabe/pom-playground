@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { z } from "zod";
 
 import { classifyError } from "./classifyError";
+import { convertXmlToPng } from "./convertXmlToPng";
 import { convertXmlToPptx } from "./convertXmlToPptx";
 import { convertXmlToPreview } from "./convertXmlToPreview";
 
@@ -27,6 +28,28 @@ const route = app
       try {
         const result = await convertXmlToPreview(xml);
         return c.json(result);
+      } catch (e) {
+        const structured = classifyError(e);
+        return c.json({ error: structured }, 400);
+      }
+    },
+  )
+  .post(
+    "/png",
+    zValidator(
+      "json",
+      z.object({
+        xml: z.string(),
+        slide: z.number().int().positive(),
+      }),
+    ),
+    async (c) => {
+      const { xml, slide } = c.req.valid("json");
+
+      try {
+        const png = await convertXmlToPng(xml, slide);
+        c.header("Content-Type", "image/png");
+        return c.body(png);
       } catch (e) {
         const structured = classifyError(e);
         return c.json({ error: structured }, 400);

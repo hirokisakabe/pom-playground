@@ -15,6 +15,7 @@ import { copySvgAsPng } from "../lib/copySvgAsPng";
 type CopyStatus = "idle" | "copying" | "success" | "error";
 
 interface SlidePreviewProps {
+  xml: string;
   svgs: string[];
   isLoading: boolean;
   error: string | null;
@@ -23,6 +24,7 @@ interface SlidePreviewProps {
 }
 
 export function SlidePreview({
+  xml,
   svgs,
   isLoading,
   error,
@@ -48,7 +50,7 @@ export function SlidePreview({
     }
     setCopyStatus("copying");
     try {
-      await copySvgAsPng(svgs[currentPage - 1]);
+      await copySvgAsPng(xml, currentPage);
       setCopyStatus("success");
     } catch {
       setCopyStatus("error");
