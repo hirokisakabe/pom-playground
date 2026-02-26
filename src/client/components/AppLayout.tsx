@@ -6,6 +6,7 @@ import { downloadPptx } from "../lib/downloadPptx";
 import { honoClient } from "../lib/honoClient";
 import { SlidePreview } from "./SlidePreview";
 import { DEFAULT_XML, XmlEditor } from "./XmlEditor";
+import { XmlReferencePanel } from "./XmlReferencePanel";
 
 export function AppLayout() {
   const [xmlValue, setXmlValue] = useState(DEFAULT_XML);
@@ -67,7 +68,7 @@ export function AppLayout() {
           onPageChange={setCurrentPage}
         />
       </div>
-      <div className="flex gap-2 border-t p-4">
+      <div className="flex items-center gap-2 border-t p-4">
         <button
           className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm disabled:opacity-50"
           onClick={() => void handlePreview()}
@@ -82,6 +83,9 @@ export function AppLayout() {
         >
           ダウンロード
         </button>
+        <div className="ml-auto">
+          <XmlReferencePanel />
+        </div>
       </div>
     </div>
   );
