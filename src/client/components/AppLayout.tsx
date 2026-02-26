@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { downloadPptx } from "../lib/downloadPptx";
 import { honoClient } from "../lib/honoClient";
 import { SlidePreview } from "./SlidePreview";
 import { DEFAULT_XML, XmlEditor } from "./XmlEditor";
+
+const DEBOUNCE_MS = 500;
 
 export function AppLayout() {
   const [xmlValue, setXmlValue] = useState(DEFAULT_XML);
@@ -14,6 +16,9 @@ export function AppLayout() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const isInitialRenderRef = useRef(true);
 
   async function handleDownload() {
     setIsDownloading(true);
@@ -30,14 +35,22 @@ export function AppLayout() {
     }
   }
 
-  async function handlePreview() {
+  async function executePreview() {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
     setIsLoading(true);
     setError(null);
 
     try {
-      const res = await honoClient.api.preview.$post({
-        json: { xml: xmlValue },
-      });
+      const res = await honoClient.api.preview.$post(
+        { json: { xml: xmlValue } },
+        { init: { signal: controller.signal } },
+      );
 
       const data = await res.json();
 
@@ -48,11 +61,48 @@ export function AppLayout() {
 
       setSvgs(data.svgs);
       setCurrentPage(1);
-    } catch {
+    } catch (e) {
+      if (e instanceof DOMException && e.name === "AbortError") {
+        return;
+      }
       setError("プレビューの生成に失敗しました");
     } finally {
-      setIsLoading(false);
+      if (!controller.signal.aborted) {
+        setIsLoading(false);
+      }
     }
+  }
+
+  useEffect(() => {
+    if (isInitialRenderRef.current) {
+      isInitialRenderRef.current = false;
+      return;
+    }
+
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    debounceTimerRef.current = setTimeout(() => {
+      void executePreview();
+    }, DEBOUNCE_MS);
+
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, [xmlValue]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function handleManualPreview() {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = null;
+    }
+    void executePreview();
   }
 
   return (
@@ -70,7 +120,7 @@ export function AppLayout() {
       <div className="flex gap-2 border-t p-4">
         <button
           className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm disabled:opacity-50"
-          onClick={() => void handlePreview()}
+          onClick={handleManualPreview}
           disabled={isLoading}
         >
           プレビュー更新
