@@ -1,5 +1,6 @@
 "use client";
 
+import { Download, ExternalLink, RefreshCw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { downloadPptx } from "../lib/downloadPptx";
@@ -108,8 +109,45 @@ export function AppLayout() {
 
   return (
     <div className="flex h-screen flex-col">
+      <header className="flex items-center justify-between border-b px-4 py-2">
+        <span className="text-lg font-semibold">pom playground</span>
+        <div className="flex items-center gap-2">
+          <a
+            href="https://github.com/hirokisakabe/pom"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors"
+          >
+            <ExternalLink className="size-4" />
+            <span>pom</span>
+          </a>
+          <button
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors disabled:opacity-50"
+            onClick={handleManualPreview}
+            disabled={isLoading}
+          >
+            <RefreshCw className="size-4" />
+            <span>プレビュー更新</span>
+          </button>
+          <button
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors disabled:opacity-50"
+            onClick={() => void handleDownload()}
+            disabled={isDownloading}
+          >
+            <Download className="size-4" />
+            <span>ダウンロード</span>
+          </button>
+        </div>
+      </header>
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 p-4">
-        <XmlEditor value={xmlValue} onChange={setXmlValue} />
+        <div className="flex min-h-0 flex-col gap-2">
+          <div className="flex items-center">
+            <XmlReferencePanel />
+          </div>
+          <div className="min-h-0 flex-1">
+            <XmlEditor value={xmlValue} onChange={setXmlValue} />
+          </div>
+        </div>
         <SlidePreview
           svgs={svgs}
           isLoading={isLoading}
@@ -117,36 +155,6 @@ export function AppLayout() {
           currentPage={currentPage}
           onPageChange={setCurrentPage}
         />
-      </div>
-      <div className="flex items-center gap-2 border-t p-4">
-        <button
-          className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm disabled:opacity-50"
-          onClick={handleManualPreview}
-          disabled={isLoading}
-        >
-          プレビュー更新
-        </button>
-        <button
-          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md px-4 py-2 text-sm disabled:opacity-50"
-          onClick={() => void handleDownload()}
-          disabled={isDownloading}
-        >
-          ダウンロード
-        </button>
-        <div className="ml-auto flex items-center gap-4">
-          <span className="text-muted-foreground text-xs">
-            Powered by{" "}
-            <a
-              href="https://github.com/hirokisakabe/pom"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:opacity-80"
-            >
-              pom
-            </a>
-          </span>
-          <XmlReferencePanel />
-        </div>
       </div>
     </div>
   );

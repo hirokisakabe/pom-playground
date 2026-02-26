@@ -172,11 +172,12 @@ export function XmlReferencePanel() {
     <Sheet>
       <SheetTrigger asChild>
         <button
-          className="text-muted-foreground hover:text-foreground rounded-md p-2 transition-colors"
+          className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors"
           aria-label="XML リファレンスを開く"
           title="XML リファレンス"
         >
-          <CircleHelp className="size-5" />
+          <CircleHelp className="size-4" />
+          <span>リファレンス</span>
         </button>
       </SheetTrigger>
       <SheetContent className="sm:max-w-md" side="right">
