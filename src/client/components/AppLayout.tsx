@@ -119,10 +119,21 @@ export function AppLayout() {
             href="https://github.com/hirokisakabe/pom"
             target="_blank"
             rel="noopener noreferrer"
+            title="XML→PPTX 変換ライブラリ"
             className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors"
           >
             <ExternalLink className="size-4" />
             <span>pom</span>
+          </a>
+          <a
+            href="https://github.com/hirokisakabe/pptx-glimpse"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="PPTX→SVG 変換ライブラリ"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors"
+          >
+            <ExternalLink className="size-4" />
+            <span>pptx-glimpse</span>
           </a>
           <button
             className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors disabled:opacity-50"
