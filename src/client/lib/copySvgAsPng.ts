@@ -1,3 +1,6 @@
+const PNG_WIDTH = 1920;
+const PNG_HEIGHT = 1080;
+
 export async function copySvgAsPng(svgString: string): Promise<void> {
   if (
     !("clipboard" in navigator) ||
@@ -13,26 +16,19 @@ export async function copySvgAsPng(svgString: string): Promise<void> {
   const doc = parser.parseFromString(svgString, "image/svg+xml");
   const svgElement = doc.documentElement;
 
-  let width = parseFloat(svgElement.getAttribute("width") ?? "0");
-  let height = parseFloat(svgElement.getAttribute("height") ?? "0");
-
-  const hasValidSize =
-    Number.isFinite(width) &&
-    width > 0 &&
-    Number.isFinite(height) &&
-    height > 0;
-
-  if (!hasValidSize) {
-    const viewBox = svgElement.getAttribute("viewBox");
-    if (viewBox) {
-      const parts = viewBox.split(/[\s,]+/);
-      width = parseFloat(parts[2]) || 1280;
-      height = parseFloat(parts[3]) || 720;
-    } else {
-      width = 1280;
-      height = 720;
+  if (!svgElement.getAttribute("viewBox")) {
+    const origWidth = parseFloat(svgElement.getAttribute("width") ?? "0");
+    const origHeight = parseFloat(svgElement.getAttribute("height") ?? "0");
+    if (origWidth > 0 && origHeight > 0) {
+      svgElement.setAttribute(
+        "viewBox",
+        "0 0 " + String(origWidth) + " " + String(origHeight),
+      );
     }
   }
+
+  svgElement.setAttribute("width", String(PNG_WIDTH));
+  svgElement.setAttribute("height", String(PNG_HEIGHT));
 
   if (!svgElement.getAttribute("xmlns")) {
     svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -49,16 +45,16 @@ export async function copySvgAsPng(svgString: string): Promise<void> {
     const img = await loadImage(url);
 
     const canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = PNG_WIDTH;
+    canvas.height = PNG_HEIGHT;
     const ctx = canvas.getContext("2d");
     if (!ctx) {
       throw new Error("Canvas context is not available");
     }
 
     ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, width, height);
-    ctx.drawImage(img, 0, 0, width, height);
+    ctx.fillRect(0, 0, PNG_WIDTH, PNG_HEIGHT);
+    ctx.drawImage(img, 0, 0, PNG_WIDTH, PNG_HEIGHT);
 
     const pngBlob = await canvasToBlob(canvas);
 
