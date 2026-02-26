@@ -1,3 +1,5 @@
+import { honoClient } from "./honoClient";
+
 interface StructuredError {
   type: string;
   message: string;
@@ -23,10 +25,8 @@ function isErrorResponse(value: unknown): value is { error: StructuredError } {
 }
 
 export async function downloadPptx(xml: string): Promise<void> {
-  const res = await fetch("/api/download", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ xml }),
+  const res = await honoClient.api.download.$post({
+    json: { xml },
   });
 
   if (!res.ok) {
