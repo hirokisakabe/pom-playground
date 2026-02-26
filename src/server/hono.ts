@@ -2,6 +2,7 @@ import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
 
+import { classifyError } from "./classifyError";
 import { convertXmlToPptx } from "./convertXmlToPptx";
 import { convertXmlToPreview } from "./convertXmlToPreview";
 
@@ -27,9 +28,8 @@ const route = app
         const result = await convertXmlToPreview(xml);
         return c.json(result);
       } catch (e) {
-        const message =
-          e instanceof Error ? e.message : "プレビューの生成に失敗しました";
-        return c.json({ error: message }, 400);
+        const structured = classifyError(e);
+        return c.json({ error: structured }, 400);
       }
     },
   )
@@ -53,9 +53,8 @@ const route = app
         c.header("Content-Disposition", 'attachment; filename="output.pptx"');
         return c.body(buffer);
       } catch (e) {
-        const message =
-          e instanceof Error ? e.message : "PPTXの生成に失敗しました";
-        return c.json({ error: message }, 400);
+        const structured = classifyError(e);
+        return c.json({ error: structured }, 400);
       }
     },
   );
