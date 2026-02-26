@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { Download, ExternalLink, RefreshCw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { downloadPptx } from "../lib/downloadPptx";
@@ -122,18 +122,20 @@ export function AppLayout() {
             <span>pom</span>
           </a>
           <button
-            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm disabled:opacity-50"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors disabled:opacity-50"
             onClick={handleManualPreview}
             disabled={isLoading}
           >
-            プレビュー更新
+            <RefreshCw className="size-4" />
+            <span>プレビュー更新</span>
           </button>
           <button
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md px-4 py-2 text-sm disabled:opacity-50"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors disabled:opacity-50"
             onClick={() => void handleDownload()}
             disabled={isDownloading}
           >
-            ダウンロード
+            <Download className="size-4" />
+            <span>ダウンロード</span>
           </button>
         </div>
       </header>
