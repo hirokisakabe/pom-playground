@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalLink } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { downloadPptx } from "../lib/downloadPptx";
@@ -109,15 +110,17 @@ export function AppLayout() {
   return (
     <div className="flex h-screen flex-col">
       <header className="flex items-center justify-between border-b px-4 py-2">
-        <a
-          href="https://github.com/hirokisakabe/pom"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-lg font-semibold hover:opacity-80"
-        >
-          pom playground
-        </a>
+        <span className="text-lg font-semibold">pom playground</span>
         <div className="flex items-center gap-2">
+          <a
+            href="https://github.com/hirokisakabe/pom"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors"
+          >
+            <ExternalLink className="size-4" />
+            <span>pom</span>
+          </a>
           <button
             className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm disabled:opacity-50"
             onClick={handleManualPreview}
