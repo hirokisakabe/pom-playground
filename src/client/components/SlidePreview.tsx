@@ -42,7 +42,7 @@ export function SlidePreview({
     return (
       <div className="bg-muted flex h-full items-center justify-center rounded-md border">
         <p className="text-muted-foreground">
-          「プレビュー更新」ボタンを押してプレビューを表示
+          XML を編集するとプレビューが自動的に表示されます
         </p>
       </div>
     );
