@@ -137,16 +137,12 @@ export function AppLayout() {
             <Download className="size-4" />
             <span>ダウンロード</span>
           </button>
+          <XmlReferencePanel />
         </div>
       </header>
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 p-4">
-        <div className="flex min-h-0 flex-col gap-2">
-          <div className="flex items-center">
-            <XmlReferencePanel />
-          </div>
-          <div className="min-h-0 flex-1">
-            <XmlEditor value={xmlValue} onChange={setXmlValue} />
-          </div>
+        <div className="min-h-0">
+          <XmlEditor value={xmlValue} onChange={setXmlValue} />
         </div>
         <SlidePreview
           svgs={svgs}
