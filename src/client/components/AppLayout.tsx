@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { downloadPptx } from "../lib/downloadPptx";
 import { honoClient } from "../lib/honoClient";
+import type { StructuredError } from "./SlidePreview";
 import { SlidePreview } from "./SlidePreview";
 import { DEFAULT_XML, XmlEditor } from "./XmlEditor";
 import { XmlReferencePanel } from "./XmlReferencePanel";
@@ -17,21 +18,21 @@ export function AppLayout() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [errors, setErrors] = useState<StructuredError[] | null>(null);
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const isInitialRenderRef = useRef(true);
 
   async function handleDownload() {
     setIsDownloading(true);
-    setError(null);
+    setErrors(null);
 
     try {
       await downloadPptx(xmlValue);
     } catch (e) {
       const message =
         e instanceof Error ? e.message : "ダウンロードに失敗しました";
-      setError(message);
+      setErrors([{ type: "unknown", message }]);
     } finally {
       setIsDownloading(false);
     }
@@ -46,7 +47,7 @@ export function AppLayout() {
     abortControllerRef.current = controller;
 
     setIsLoading(true);
-    setError(null);
+    setErrors(null);
 
     try {
       const res = await honoClient.api.preview.$post(
@@ -57,7 +58,7 @@ export function AppLayout() {
       const data = await res.json();
 
       if ("error" in data) {
-        setError(data.error.message);
+        setErrors([data.error]);
         return;
       }
 
@@ -67,7 +68,9 @@ export function AppLayout() {
       if (e instanceof DOMException && e.name === "AbortError") {
         return;
       }
-      setError("プレビューの生成に失敗しました");
+      setErrors([
+        { type: "unknown", message: "プレビューの生成に失敗しました" },
+      ]);
     } finally {
       if (!controller.signal.aborted) {
         setIsLoading(false);
@@ -147,7 +150,7 @@ export function AppLayout() {
         <SlidePreview
           svgs={svgs}
           isLoading={isLoading}
-          error={error}
+          errors={errors}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
         />

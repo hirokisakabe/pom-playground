@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  AlertCircle,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -12,12 +13,30 @@ import { useEffect, useRef, useState } from "react";
 
 import { copySvgAsPng } from "../lib/copySvgAsPng";
 
+export interface StructuredError {
+  type: string;
+  message: string;
+}
+
 type CopyStatus = "idle" | "copying" | "success" | "error";
+
+function getErrorTypeLabel(type: string): string {
+  switch (type) {
+    case "xml_syntax":
+      return "XML構文エラー";
+    case "schema":
+      return "属性値エラー";
+    case "structure":
+      return "構造エラー";
+    default:
+      return "エラー";
+  }
+}
 
 interface SlidePreviewProps {
   svgs: string[];
   isLoading: boolean;
-  error: string | null;
+  errors: StructuredError[] | null;
   currentPage: number;
   onPageChange: (page: number) => void;
 }
@@ -25,7 +44,7 @@ interface SlidePreviewProps {
 export function SlidePreview({
   svgs,
   isLoading,
-  error,
+  errors,
   currentPage,
   onPageChange,
 }: SlidePreviewProps) {
@@ -70,10 +89,29 @@ export function SlidePreview({
     );
   }
 
-  if (error) {
+  if (errors && errors.length > 0) {
     return (
-      <div className="bg-muted flex h-full items-center justify-center rounded-md border">
-        <p className="text-destructive text-sm">{error}</p>
+      <div className="flex h-full flex-col rounded-md border">
+        <div className="flex-1 overflow-auto p-4">
+          <ul className="space-y-2">
+            {errors.map((error, index) => (
+              <li
+                key={index}
+                className="border-destructive/20 bg-destructive/5 flex items-start gap-3 rounded-md border p-3"
+              >
+                <AlertCircle className="text-destructive mt-0.5 size-4 shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-destructive text-xs font-semibold">
+                    {getErrorTypeLabel(error.type)}
+                  </p>
+                  <p className="text-foreground mt-1 text-sm break-words">
+                    {error.message}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }
