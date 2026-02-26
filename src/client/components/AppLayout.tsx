@@ -83,6 +83,19 @@ export function AppLayout() {
           ダウンロード
         </button>
       </div>
+      <footer className="text-muted-foreground flex items-center justify-center border-t px-4 py-2 text-xs">
+        <span>
+          Powered by{" "}
+          <a
+            href="https://github.com/hirokisakabe/pom"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:opacity-80"
+          >
+            pom
+          </a>
+        </span>
+      </footer>
     </div>
   );
 }
