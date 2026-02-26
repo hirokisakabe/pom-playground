@@ -133,7 +133,18 @@ export function AppLayout() {
         >
           ダウンロード
         </button>
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center gap-4">
+          <span className="text-muted-foreground text-xs">
+            Powered by{" "}
+            <a
+              href="https://github.com/hirokisakabe/pom"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:opacity-80"
+            >
+              pom
+            </a>
+          </span>
           <XmlReferencePanel />
         </div>
       </div>
