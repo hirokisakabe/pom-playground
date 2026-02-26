@@ -1,10 +1,25 @@
-function isErrorResponse(value: unknown): value is { error: string } {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    "error" in value &&
-    typeof Object.getOwnPropertyDescriptor(value, "error")?.value === "string"
-  );
+interface StructuredError {
+  type: string;
+  message: string;
+}
+
+function isErrorResponse(value: unknown): value is { error: StructuredError } {
+  if (typeof value !== "object" || value === null || !("error" in value)) {
+    return false;
+  }
+  const err: unknown = Object.getOwnPropertyDescriptor(value, "error")?.value;
+  if (typeof err !== "object" || err === null) {
+    return false;
+  }
+  if (!("type" in err) || !("message" in err)) {
+    return false;
+  }
+  const typeVal: unknown = Object.getOwnPropertyDescriptor(err, "type")?.value;
+  const msgVal: unknown = Object.getOwnPropertyDescriptor(
+    err,
+    "message",
+  )?.value;
+  return typeof typeVal === "string" && typeof msgVal === "string";
 }
 
 export async function downloadPptx(xml: string): Promise<void> {
@@ -20,7 +35,7 @@ export async function downloadPptx(xml: string): Promise<void> {
       const text = await res.text();
       const parsed: unknown = JSON.parse(text);
       if (isErrorResponse(parsed)) {
-        message = parsed.error;
+        message = parsed.error.message;
       }
     } catch {
       // JSONパースに失敗した場合はデフォルトメッセージを使用

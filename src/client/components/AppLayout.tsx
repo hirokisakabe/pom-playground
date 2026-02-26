@@ -42,7 +42,7 @@ export function AppLayout() {
       const data = await res.json();
 
       if ("error" in data) {
-        setError(data.error);
+        setError(data.error.message);
         return;
       }
 
