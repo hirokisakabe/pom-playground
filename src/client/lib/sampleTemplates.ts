@@ -103,118 +103,151 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
 </VStack>`,
   },
   {
-    id: "project-timeline",
-    name: "プロジェクトタイムライン",
-    xml: `<VStack w="max" h="max" padding="32" backgroundColor="F5F7FA" gap="24">
-  <VStack gap="4" alignItems="center">
-    <Text fontPx="28" color="1A237E" bold="true">プロジェクト開発ロードマップ</Text>
-    <Text fontPx="14" color="5C6BC0">2025年度 主要マイルストーン</Text>
+    id: "product-landing",
+    name: "プロダクト紹介",
+    xml: `<VStack w="1280" h="max" padding="48" gap="40" backgroundColor="F8FAFC" alignItems="stretch">
+
+  <VStack gap="16" alignItems="center">
+    <Shape shapeType="roundRect" w="180" h="32" fontPx="14" bold="true"
+           fill='{"color": "DBEAFE"}' color="2563EB" borderRadius="16">
+      NEW RELEASE
+    </Shape>
+    <Text fontPx="48" bold="true" color="0F172A" alignText="center">
+      次世代の業務効率化プラットフォーム
+    </Text>
+    <Text fontPx="18" color="64748B" alignText="center" lineSpacingMultiple="1.5">
+      煩雑なプロセスを自動化し、チームの生産性を最大化します。
+      導入から運用まで、専門チームが徹底サポート。
+    </Text>
   </VStack>
-  <Timeline w="max" direction="horizontal" items='[{"label":"Q1: 企画・設計","description":"要件定義、技術選定、UI/UXデザイン","color":"1565C0"},{"label":"Q2: 開発フェーズ1","description":"コア機能実装、API開発、単体テスト","color":"2E7D32"},{"label":"Q3: 開発フェーズ2","description":"統合テスト、パフォーマンス最適化、β版リリース","color":"E65100"},{"label":"Q4: リリース","description":"本番デプロイ、モニタリング、フィードバック収集","color":"6A1B9A"}]' />
-  <HStack w="max" gap="16">
-    <Box w="50%" padding="16" backgroundColor="FFFFFF" border='{"color":"C5CAE9","width":1}' borderRadius="8">
-      <VStack gap="12">
-        <Text fontPx="16" color="1A237E" bold="true">進捗サマリー</Text>
-        <Chart w="400" h="200" chartType="bar" data='[{"name":"計画","labels":["企画","設計","開発","テスト","リリース"],"values":[100,100,60,20,0]},{"name":"実績","labels":["企画","設計","開発","テスト","リリース"],"values":[100,90,45,10,0]}]' showLegend="true" chartColors='["1565C0","4FC3F7"]' />
+
+  <HStack gap="24" alignItems="stretch">
+    <Box w="31%" padding="32" backgroundColor="FFFFFF" borderRadius="16" shadow='{"type": "outer", "opacity": 0.1, "blur": 10, "angle": 90, "offset": 4}'>
+      <VStack gap="16" alignItems="start">
+        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "EEF2FF"}'>
+          <Text fontPx="24" color="4F46E5">⚡</Text>
+        </Shape>
+        <Text fontPx="20" bold="true" color="0F172A">圧倒的なスピード</Text>
+        <Text fontPx="14" color="475569" lineSpacingMultiple="1.4">
+          独自のエンジンにより、従来のツールと比較して約5倍の処理速度を実現しました。
+        </Text>
       </VStack>
     </Box>
-    <Box w="50%" padding="16" backgroundColor="FFFFFF" border='{"color":"C5CAE9","width":1}' borderRadius="8">
-      <VStack gap="12">
-        <Text fontPx="16" color="1A237E" bold="true">チーム体制</Text>
-        <Table w="max" columns='[{"width":140},{"width":80},{"width":180}]' rows='[{"cells":[{"text":"チーム","fontPx":11,"color":"FFFFFF","bold":true,"alignText":"center","backgroundColor":"1A237E"},{"text":"人数","fontPx":11,"color":"FFFFFF","bold":true,"alignText":"center","backgroundColor":"1A237E"},{"text":"担当領域","fontPx":11,"color":"FFFFFF","bold":true,"alignText":"center","backgroundColor":"1A237E"}]},{"cells":[{"text":"フロントエンド","fontPx":11,"color":"1A1A1A","backgroundColor":"E8EAF6"},{"text":"5名","fontPx":11,"color":"1A1A1A","alignText":"center","backgroundColor":"FFFFFF"},{"text":"React, Next.js","fontPx":11,"color":"5A5A5A","backgroundColor":"FFFFFF"}]},{"cells":[{"text":"バックエンド","fontPx":11,"color":"1A1A1A","backgroundColor":"E8EAF6"},{"text":"4名","fontPx":11,"color":"1A1A1A","alignText":"center","backgroundColor":"FFFFFF"},{"text":"Go, PostgreSQL","fontPx":11,"color":"5A5A5A","backgroundColor":"FFFFFF"}]},{"cells":[{"text":"インフラ","fontPx":11,"color":"1A1A1A","backgroundColor":"E8EAF6"},{"text":"2名","fontPx":11,"color":"1A1A1A","alignText":"center","backgroundColor":"FFFFFF"},{"text":"AWS, Terraform","fontPx":11,"color":"5A5A5A","backgroundColor":"FFFFFF"}]},{"cells":[{"text":"QA","fontPx":11,"color":"1A1A1A","backgroundColor":"E8EAF6"},{"text":"3名","fontPx":11,"color":"1A1A1A","alignText":"center","backgroundColor":"FFFFFF"},{"text":"E2E, 負荷テスト","fontPx":11,"color":"5A5A5A","backgroundColor":"FFFFFF"}]}]' defaultRowHeight="32" />
+
+    <Box w="31%" padding="32" backgroundColor="FFFFFF" borderRadius="16" shadow='{"type": "outer", "opacity": 0.1, "blur": 10, "angle": 90, "offset": 4}'>
+      <VStack gap="16" alignItems="start">
+        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "ECFDF5"}'>
+          <Text fontPx="24" color="059669">🔒</Text>
+        </Shape>
+        <Text fontPx="20" bold="true" color="0F172A">高度なセキュリティ</Text>
+        <Text fontPx="14" color="475569" lineSpacingMultiple="1.4">
+          金融機関レベルの暗号化技術を標準搭載。大切なデータを安全に守ります。
+        </Text>
+      </VStack>
+    </Box>
+
+    <Box w="31%" padding="32" backgroundColor="FFFFFF" borderRadius="16" shadow='{"type": "outer", "opacity": 0.1, "blur": 10, "angle": 90, "offset": 4}'>
+      <VStack gap="16" alignItems="start">
+        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "FFFBEB"}'>
+          <Text fontPx="24" color="D97706">📱</Text>
+        </Shape>
+        <Text fontPx="20" bold="true" color="0F172A">マルチデバイス対応</Text>
+        <Text fontPx="14" color="475569" lineSpacingMultiple="1.4">
+          PC、スマートフォン、タブレット。場所を選ばず、いつでもどこでもアクセス可能。
+        </Text>
       </VStack>
     </Box>
   </HStack>
-</VStack>`,
-  },
-  {
-    id: "process-flow",
-    name: "業務フロー図",
-    xml: `<VStack w="max" h="max" padding="32" backgroundColor="FAFBFC" gap="24">
-  <VStack gap="4" alignItems="center">
-    <Text fontPx="28" color="0D47A1" bold="true">受注から納品までの業務フロー</Text>
-    <Text fontPx="14" color="5A5A8A">Order-to-Delivery Process Flow</Text>
-  </VStack>
-  <ProcessArrow w="max" direction="horizontal" steps='[{"label":"受注","description":"顧客からの注文受付・確認","color":"1565C0"},{"label":"審査","description":"与信チェック・在庫確認","color":"0277BD"},{"label":"製造","description":"生産計画・品質管理","color":"00838F"},{"label":"検品","description":"出荷前最終検査","color":"2E7D32"},{"label":"出荷","description":"梱包・配送手配","color":"558B2F"},{"label":"納品","description":"顧客への引渡し・検収","color":"33691E"}]' />
-  <HStack w="max" gap="16">
-    <Box w="50%" padding="16" backgroundColor="FFFFFF" border='{"color":"BBDEFB","width":1}' borderRadius="8">
-      <VStack gap="12">
-        <Text fontPx="16" color="0D47A1" bold="true">承認フロー</Text>
-        <Flow w="420" h="200" direction="vertical" nodes='[{"id":"start","label":"申請","x":210,"y":20,"color":"1565C0"},{"id":"check","label":"部門長確認","x":210,"y":80,"color":"0277BD"},{"id":"approve","label":"承認","x":120,"y":160,"color":"2E7D32"},{"id":"reject","label":"差戻し","x":300,"y":160,"color":"C62828"}]' connections='[{"from":"start","to":"check","label":"提出"},{"from":"check","to":"approve","label":"OK"},{"from":"check","to":"reject","label":"NG"}]' />
+
+  <Box w="max" padding="40" backgroundColor="1E293B" borderRadius="16">
+    <HStack gap="40" alignItems="center" justifyContent="spaceBetween">
+      <VStack gap="8" w="60%">
+        <Text fontPx="24" bold="true" color="FFFFFF">まずは無料トライアルから</Text>
+        <Text fontPx="14" color="94A3B8">すべての機能を14日間無料でお試しいただけます。</Text>
       </VStack>
-    </Box>
-    <Box w="50%" padding="16" backgroundColor="FFFFFF" border='{"color":"BBDEFB","width":1}' borderRadius="8">
-      <VStack gap="12">
-        <Text fontPx="16" color="0D47A1" bold="true">月次処理件数</Text>
-        <Chart w="400" h="200" chartType="line" data='[{"name":"受注件数","labels":["4月","5月","6月","7月","8月","9月"],"values":[120,135,142,158,165,180]},{"name":"納品件数","labels":["4月","5月","6月","7月","8月","9月"],"values":[115,128,138,150,160,172]}]' showLegend="true" chartColors='["1565C0","2E7D32"]' />
-      </VStack>
-    </Box>
-  </HStack>
-</VStack>`,
-  },
-  {
-    id: "competitive-analysis",
-    name: "競合分析マトリクス",
-    xml: `<VStack w="max" h="max" padding="32" backgroundColor="F8F9FC" gap="20">
-  <VStack gap="4" alignItems="center">
-    <Text fontPx="28" color="1B2A4A" bold="true">市場ポジショニング分析</Text>
-    <Text fontPx="14" color="6B7B9A">Competitive Positioning Matrix</Text>
-  </VStack>
-  <HStack w="max" gap="16" alignItems="start">
-    <Box w="55%" padding="16" backgroundColor="FFFFFF" border='{"color":"D0D5DD","width":1}' borderRadius="8">
-      <VStack gap="12">
-        <Text fontPx="16" color="1B2A4A" bold="true">ポジショニングマップ</Text>
-        <Matrix w="460" h="320" axes='{"top":"高価格","bottom":"低価格","left":"機能特化","right":"汎用性"}' quadrants='[{"label":"プレミアム特化","color":"E3F2FD"},{"label":"プレミアム汎用","color":"FFF3E0"},{"label":"エントリー特化","color":"F3E5F5"},{"label":"エントリー汎用","color":"E8F5E9"}]' items='[{"label":"自社","x":65,"y":25,"color":"1565C0"},{"label":"競合A","x":75,"y":20,"color":"C62828"},{"label":"競合B","x":35,"y":55,"color":"2E7D32"},{"label":"競合C","x":80,"y":70,"color":"E65100"},{"label":"競合D","x":20,"y":30,"color":"6A1B9A"}]' />
-      </VStack>
-    </Box>
-    <VStack w="45%" gap="12">
-      <Box w="max" padding="16" backgroundColor="FFFFFF" border='{"color":"D0D5DD","width":1}' borderRadius="8">
-        <VStack gap="10">
-          <Text fontPx="16" color="1B2A4A" bold="true">市場シェア</Text>
-          <Chart w="360" h="180" chartType="doughnut" data='[{"name":"シェア","labels":["自社","競合A","競合B","競合C","その他"],"values":[28,22,18,15,17]}]' showLegend="true" chartColors='["1565C0","C62828","2E7D32","E65100","9E9E9E"]' />
-        </VStack>
-      </Box>
-      <Box w="max" padding="16" backgroundColor="FFFFFF" border='{"color":"D0D5DD","width":1}' borderRadius="8">
-        <VStack gap="10">
-          <Text fontPx="16" color="1B2A4A" bold="true">主要指標比較</Text>
-          <Chart w="360" h="180" chartType="radar" data='[{"name":"自社","labels":["機能","価格","サポート","信頼性","拡張性"],"values":[85,70,90,88,82]},{"name":"競合A","labels":["機能","価格","サポート","信頼性","拡張性"],"values":[80,65,75,85,78]}]' showLegend="true" chartColors='["1565C0","C62828"]' />
-        </VStack>
-      </Box>
-    </VStack>
-  </HStack>
-</VStack>`,
-  },
-  {
-    id: "org-chart",
-    name: "組織図",
-    xml: `<VStack w="max" h="max" padding="32" backgroundColor="F5F6FA" gap="24">
-  <VStack gap="4" alignItems="center">
-    <Text fontPx="28" color="263238" bold="true">組織体制図</Text>
-    <Text fontPx="14" color="607D8B">Organization Chart — 2025年度</Text>
-  </VStack>
-  <Box w="max" padding="24" backgroundColor="FFFFFF" border='{"color":"CFD8DC","width":1}' borderRadius="8">
-    <Tree w="max" h="340" layout="vertical" data='{"label":"代表取締役社長","children":[{"label":"経営企画部","children":[{"label":"事業戦略室"},{"label":"IR・広報室"}]},{"label":"技術本部","children":[{"label":"開発部"},{"label":"インフラ部"},{"label":"QA部"}]},{"label":"営業本部","children":[{"label":"国内営業部"},{"label":"海外営業部"}]},{"label":"管理本部","children":[{"label":"人事部"},{"label":"経理部"},{"label":"法務部"}]}]}' />
+      <Shape shapeType="roundRect" w="240" h="56" fontPx="18" bold="true"
+             fill='{"color": "2563EB"}' color="FFFFFF" borderRadius="8">
+        無料で始める
+      </Shape>
+    </HStack>
   </Box>
-  <HStack w="max" gap="16">
-    <Box w="33%" padding="14" backgroundColor="E3F2FD" border='{"color":"1565C0","width":1}' borderRadius="8">
-      <VStack gap="4" alignItems="center">
-        <Text fontPx="20" color="1565C0" bold="true">247名</Text>
-        <Text fontPx="11" color="37474F">正社員数</Text>
+
+</VStack>`,
+  },
+  {
+    id: "pricing-plan",
+    name: "料金プラン",
+    xml: `<VStack h="max" w="max" padding="48" backgroundColor="F8FAFC" gap="40" alignItems="center">
+  <VStack gap="12" alignItems="center">
+    <Shape shapeType="roundRect" w="140" h="32" fill='{"color": "EEF2FF"}' color="6366F1" fontPx="12" bold="true">PRICING</Shape>
+    <Text fontPx="40" color="1E293B" bold="true">シンプルで、迷わない料金プラン</Text>
+    <Text fontPx="16" color="64748B">すべてのプランに14日間の無料トライアルがつきます</Text>
+  </VStack>
+
+  <HStack gap="24" alignItems="end">
+    <Box w="30%" padding="32" backgroundColor="FFFFFF" borderRadius="32" shadow='{"type": "outer", "opacity": 0.05, "blur": 20, "offset": 10}'>
+      <VStack gap="24">
+        <Shape shapeType="ellipse" w="56" h="56" fill='{"color":"E0F7FA"}' color="0891B2" fontPx="24" bold="true">🌱</Shape>
+        <VStack gap="4">
+          <Text fontPx="20" color="0891B2" bold="true">ライト</Text>
+          <HStack gap="4" alignItems="end">
+            <Text fontPx="36" bold="true" color="1E293B">¥0</Text>
+            <Text fontPx="14" color="94A3B8">/月</Text>
+          </HStack>
+        </VStack>
+        <Text fontPx="13" color="64748B" bullet="true" lineSpacingMultiple="1.8">
+          最大3プロジェクト
+          基本テンプレート利用
+          コミュニティサポート
+        </Text>
+        <Shape shapeType="roundRect" w="max" h="56" fill='{"color": "F1F5F9"}' color="64748B" fontPx="15" bold="true">無料で始める</Shape>
       </VStack>
     </Box>
-    <Box w="33%" padding="14" backgroundColor="E8F5E9" border='{"color":"2E7D32","width":1}' borderRadius="8">
-      <VStack gap="4" alignItems="center">
-        <Text fontPx="20" color="2E7D32" bold="true">12部署</Text>
-        <Text fontPx="11" color="37474F">組織構成</Text>
+
+    <Box w="32%" padding="40" backgroundColor="FFFFFF" borderRadius="32" border='{"color":"6366F1","width":3}' shadow='{"type": "outer", "opacity": 0.15, "blur": 30, "offset": 15}'>
+      <VStack gap="24">
+        <HStack justifyContent="spaceBetween" alignItems="center">
+          <Shape shapeType="ellipse" w="64" h="64" fill='{"color":"EEF2FF"}' color="6366F1" fontPx="28" bold="true">🚀</Shape>
+          <Shape shapeType="roundRect" w="100" h="28" fill='{"color": "6366F1"}' color="FFFFFF" fontPx="11" bold="true">一番人気！</Shape>
+        </HStack>
+        <VStack gap="4">
+          <Text fontPx="24" color="6366F1" bold="true">スタンダード</Text>
+          <HStack gap="4" alignItems="end">
+            <Text fontPx="44" bold="true" color="1E293B">¥4,980</Text>
+            <Text fontPx="14" color="94A3B8">/月</Text>
+          </HStack>
+        </VStack>
+        <Text fontPx="14" color="1E293B" bullet='{"type": "bullet"}' lineSpacingMultiple="1.8" bold="true">
+          プロジェクト無制限
+          AIアシスタント機能
+          高度な分析レポート
+          24時間メールサポート
+        </Text>
+        <Shape shapeType="roundRect" w="max" h="60" fill='{"color": "6366F1"}' shadow='{"type": "outer", "opacity": 0.3, "blur": 10}' color="FFFFFF" fontPx="16" bold="true">14日間無料で試す</Shape>
       </VStack>
     </Box>
-    <Box w="33%" padding="14" backgroundColor="FFF3E0" border='{"color":"E65100","width":1}' borderRadius="8">
-      <VStack gap="4" alignItems="center">
-        <Text fontPx="20" color="E65100" bold="true">4本部</Text>
-        <Text fontPx="11" color="37474F">事業部門</Text>
+
+    <Box w="30%" padding="32" backgroundColor="FFFFFF" borderRadius="32" shadow='{"type": "outer", "opacity": 0.05, "blur": 20, "offset": 10}'>
+      <VStack gap="24">
+        <Shape shapeType="ellipse" w="56" h="56" fill='{"color":"FFFBEB"}' color="D97706" fontPx="24" bold="true">💎</Shape>
+        <VStack gap="4">
+          <Text fontPx="20" color="D97706" bold="true">ビジネス</Text>
+          <HStack gap="4" alignItems="end">
+            <Text fontPx="32" bold="true" color="1E293B">要お見積り</Text>
+          </HStack>
+        </VStack>
+        <Text fontPx="13" color="64748B" bullet="true" lineSpacingMultiple="1.8">
+          専任サクセスマネージャー
+          SSO / SAML認証
+          操作ログ保存（無制限）
+          個別トレーニング実施
+        </Text>
+        <Shape shapeType="roundRect" w="max" h="56" fill='{"color": "1E293B"}' color="FFFFFF" fontPx="15" bold="true">お問い合わせ</Shape>
       </VStack>
     </Box>
   </HStack>
+
+  <Text fontPx="12" color="94A3B8">※価格はすべて税抜き表示です。年間契約の場合さらに20%OFFが適用されます。</Text>
 </VStack>`,
   },
   {
