@@ -45,7 +45,7 @@ const SECTIONS: Section[] = [
       {
         name: "Layer",
         description: "絶対位置配置",
-        attributes: "子要素に x, y が必要",
+        attributes: "子要素に x, y を指定",
       },
     ],
   },
@@ -56,27 +56,30 @@ const SECTIONS: Section[] = [
         name: "Text",
         description: "テキスト",
         attributes:
-          "fontPx, color, bold, italic, underline, strike, alignText, bullet",
+          "fontPx, color, bold, italic, underline, strike, alignText, bullet, highlight, fontFamily, lineSpacingMultiple",
       },
       {
         name: "Image",
         description: "画像",
-        attributes: "src, sizing, shadow",
+        attributes: "src, sizing (contain/cover/crop), shadow",
       },
       {
         name: "Table",
         description: "テーブル",
-        attributes: "columns, rows, defaultRowHeight",
+        attributes:
+          "defaultRowHeight / 子要素: Column (width), Row (height), Cell (fontPx, color, bold, italic, underline, strike, highlight, alignText, backgroundColor)",
       },
       {
         name: "Shape",
         description: "シェイプ",
-        attributes: "shapeType, text, fill, line, shadow",
+        attributes:
+          "shapeType (rect/roundRect/ellipse/triangle/star5/cloud/downArrow等), text, fill, line, shadow, fontPx, color, alignText, bold, italic",
       },
       {
         name: "Line",
         description: "線",
-        attributes: "x1, y1, x2, y2, color, lineWidth, beginArrow, endArrow",
+        attributes:
+          "x1, y1, x2, y2, color, lineWidth, dashType, beginArrow, endArrow",
       },
     ],
   },
@@ -87,32 +90,37 @@ const SECTIONS: Section[] = [
         name: "Chart",
         description: "チャート",
         attributes:
-          "chartType (line/pie/bar/area/doughnut/radar), data, showLegend, title",
+          "chartType (bar/line/pie/area/doughnut/radar), showLegend, showTitle, title, chartColors, radarStyle / 子要素: Series (name), DataPoint (label, value)",
       },
       {
         name: "Timeline",
         description: "タイムライン",
-        attributes: "direction, items",
+        attributes:
+          "direction / 子要素: TimelineItem (date, title, description, color)",
       },
       {
         name: "Matrix",
         description: "2x2 マトリクス",
-        attributes: "axes, quadrants, items",
+        attributes:
+          "子要素: Axes (x, y), Quadrants (topLeft, topRight, bottomLeft, bottomRight), MatrixItem (label, x, y, color)",
       },
       {
         name: "Tree",
         description: "ツリー/組織図",
-        attributes: "layout, nodeShape, data",
+        attributes:
+          "layout, nodeShape, nodeWidth, nodeHeight, levelGap, siblingGap, connectorStyle / 子要素: TreeItem (label, color) ※再帰ネスト可",
       },
       {
         name: "Flow",
         description: "フローチャート",
-        attributes: "direction, nodes, connections",
+        attributes:
+          "direction, nodeWidth, nodeHeight, nodeGap, connectorStyle / 子要素: FlowNode (id, shape, text, color), Connection (from, to, label, color)",
       },
       {
         name: "ProcessArrow",
         description: "プロセス矢印",
-        attributes: "direction, steps",
+        attributes:
+          "direction, itemWidth, itemHeight, gap, fontPx, bold, italic, strike / 子要素: Step (label, color, textColor)",
       },
     ],
   },
@@ -127,6 +135,8 @@ interface CommonAttribute {
 const COMMON_ATTRIBUTES: CommonAttribute[] = [
   { name: "w", type: 'number | "max" | "%"', description: "幅" },
   { name: "h", type: 'number | "max" | "%"', description: "高さ" },
+  { name: "minW / maxW", type: "number", description: "最小/最大幅" },
+  { name: "minH / maxH", type: "number", description: "最小/最大高さ" },
   {
     name: "padding",
     type: "number | {top,right,bottom,left}",
@@ -138,12 +148,17 @@ const COMMON_ATTRIBUTES: CommonAttribute[] = [
     description: "背景色（16進数）",
   },
   {
+    name: "backgroundImage",
+    type: "{src, sizing}",
+    description: "背景画像",
+  },
+  {
     name: "border",
     type: "{color, width, dashType}",
     description: "枠線",
   },
   { name: "borderRadius", type: "number", description: "角丸" },
-  { name: "opacity", type: "number", description: "不透明度" },
+  { name: "opacity", type: "number (0-1)", description: "不透明度" },
 ];
 
 export function XmlReferencePanel() {
