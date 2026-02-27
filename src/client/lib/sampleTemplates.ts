@@ -205,9 +205,7 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
   <HStack gap="24" alignItems="stretch">
     <Box w="31%" padding="32" backgroundColor="FFFFFF" borderRadius="16" shadow='{"type": "outer", "opacity": 0.1, "blur": 10, "angle": 90, "offset": 4}'>
       <VStack gap="16" alignItems="start">
-        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "EEF2FF"}'>
-          <Text fontPx="24" color="4F46E5">⚡</Text>
-        </Shape>
+        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "EEF2FF"}' fontPx="24" color="4F46E5">⚡</Shape>
         <Text fontPx="20" bold="true" color="0F172A">圧倒的なスピード</Text>
         <Text fontPx="14" color="475569" lineSpacingMultiple="1.4">
           独自のエンジンにより、従来のツールと比較して約5倍の処理速度を実現しました。
@@ -217,9 +215,7 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
 
     <Box w="31%" padding="32" backgroundColor="FFFFFF" borderRadius="16" shadow='{"type": "outer", "opacity": 0.1, "blur": 10, "angle": 90, "offset": 4}'>
       <VStack gap="16" alignItems="start">
-        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "ECFDF5"}'>
-          <Text fontPx="24" color="059669">🔒</Text>
-        </Shape>
+        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "ECFDF5"}' fontPx="24" color="059669">🔒</Shape>
         <Text fontPx="20" bold="true" color="0F172A">高度なセキュリティ</Text>
         <Text fontPx="14" color="475569" lineSpacingMultiple="1.4">
           金融機関レベルの暗号化技術を標準搭載。大切なデータを安全に守ります。
@@ -229,9 +225,7 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
 
     <Box w="31%" padding="32" backgroundColor="FFFFFF" borderRadius="16" shadow='{"type": "outer", "opacity": 0.1, "blur": 10, "angle": 90, "offset": 4}'>
       <VStack gap="16" alignItems="start">
-        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "FFFBEB"}'>
-          <Text fontPx="24" color="D97706">📱</Text>
-        </Shape>
+        <Shape shapeType="ellipse" w="48" h="48" fill='{"color": "FFFBEB"}' fontPx="24" color="D97706">📱</Shape>
         <Text fontPx="20" bold="true" color="0F172A">マルチデバイス対応</Text>
         <Text fontPx="14" color="475569" lineSpacingMultiple="1.4">
           PC、スマートフォン、タブレット。場所を選ばず、いつでもどこでもアクセス可能。
