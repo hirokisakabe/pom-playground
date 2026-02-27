@@ -56,7 +56,19 @@ const SECTIONS: Section[] = [
         name: "Text",
         description: "テキスト",
         attributes:
-          "fontPx, color, bold, italic, underline, strike, alignText, bullet, highlight, fontFamily, lineSpacingMultiple",
+          "fontPx, color, bold, italic, underline, strike, alignText, highlight, fontFamily, lineSpacingMultiple",
+      },
+      {
+        name: "Ul",
+        description: "箇条書きリスト",
+        attributes:
+          "fontPx, color, bold, italic, underline, strike, highlight, alignText, fontFamily, lineSpacingMultiple / 子要素: Li (text, bold, italic, underline, strike, highlight, color, fontPx, fontFamily)",
+      },
+      {
+        name: "Ol",
+        description: "番号付きリスト",
+        attributes:
+          "fontPx, color, bold, italic, underline, strike, highlight, alignText, fontFamily, lineSpacingMultiple, numberType, numberStartAt / 子要素: Li (text, bold, italic, underline, strike, highlight, color, fontPx, fontFamily)",
       },
       {
         name: "Image",
@@ -67,7 +79,7 @@ const SECTIONS: Section[] = [
         name: "Table",
         description: "テーブル",
         attributes:
-          "defaultRowHeight / 子要素: Column (width), Row (height), Cell (fontPx, color, bold, italic, underline, strike, highlight, alignText, backgroundColor)",
+          "defaultRowHeight / 子要素: Column (width), Row (height), Cell (fontPx, color, bold, italic, underline, strike, highlight, alignText, backgroundColor, fontFamily, lineSpacingMultiple)",
       },
       {
         name: "Shape",

@@ -14,7 +14,7 @@
     "@codemirror/lang-xml": "^6.1.0",
     "@codemirror/state": "^6.5.4",
     "@codemirror/view": "^6.39.15",
-    "@hirokisakabe/pom": "^2.0.0",
+    "@hirokisakabe/pom": "^3.0.0",
     "@hono/zod-validator": "^0.7.6",
     "@radix-ui/react-slot": "^1.2.4",
     "@vercel/analytics": "^1.6.1",

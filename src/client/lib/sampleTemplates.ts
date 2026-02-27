@@ -270,11 +270,11 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
             <Text fontPx="14" color="94A3B8">/月</Text>
           </HStack>
         </VStack>
-        <Text fontPx="13" color="64748B" bullet="true" lineSpacingMultiple="1.8">
-          最大3プロジェクト
-          基本テンプレート利用
-          コミュニティサポート
-        </Text>
+        <Ul fontPx="13" color="64748B" lineSpacingMultiple="1.8">
+          <Li text="最大3プロジェクト" />
+          <Li text="基本テンプレート利用" />
+          <Li text="コミュニティサポート" />
+        </Ul>
         <Shape shapeType="roundRect" w="max" h="56" fill='{"color": "F1F5F9"}' color="64748B" fontPx="15" bold="true">無料で始める</Shape>
       </VStack>
     </Box>
@@ -292,12 +292,12 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
             <Text fontPx="14" color="94A3B8">/月</Text>
           </HStack>
         </VStack>
-        <Text fontPx="14" color="1E293B" bullet='{"type": "bullet"}' lineSpacingMultiple="1.8" bold="true">
-          プロジェクト無制限
-          AIアシスタント機能
-          高度な分析レポート
-          24時間メールサポート
-        </Text>
+        <Ul fontPx="14" color="1E293B" lineSpacingMultiple="1.8" bold="true">
+          <Li text="プロジェクト無制限" />
+          <Li text="AIアシスタント機能" />
+          <Li text="高度な分析レポート" />
+          <Li text="24時間メールサポート" />
+        </Ul>
         <Shape shapeType="roundRect" w="max" h="60" fill='{"color": "6366F1"}' shadow='{"type": "outer", "opacity": 0.3, "blur": 10}' color="FFFFFF" fontPx="16" bold="true">14日間無料で試す</Shape>
       </VStack>
     </Box>
@@ -311,12 +311,12 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
             <Text fontPx="32" bold="true" color="1E293B">要お見積り</Text>
           </HStack>
         </VStack>
-        <Text fontPx="13" color="64748B" bullet="true" lineSpacingMultiple="1.8">
-          専任サクセスマネージャー
-          SSO / SAML認証
-          操作ログ保存（無制限）
-          個別トレーニング実施
-        </Text>
+        <Ul fontPx="13" color="64748B" lineSpacingMultiple="1.8">
+          <Li text="専任サクセスマネージャー" />
+          <Li text="SSO / SAML認証" />
+          <Li text="操作ログ保存（無制限）" />
+          <Li text="個別トレーニング実施" />
+        </Ul>
         <Shape shapeType="roundRect" w="max" h="56" fill='{"color": "1E293B"}' color="FFFFFF" fontPx="15" bold="true">お問い合わせ</Shape>
       </VStack>
     </Box>
