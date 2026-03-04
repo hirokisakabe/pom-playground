@@ -79,7 +79,7 @@ const SECTIONS: Section[] = [
         name: "Table",
         description: "テーブル",
         attributes:
-          "defaultRowHeight / 子要素: Column (width), Row (height), Cell (fontPx, color, bold, italic, underline, strike, highlight, alignText, backgroundColor, fontFamily, lineSpacingMultiple)",
+          "defaultRowHeight / 子要素: TableColumn (width), TableRow (height), TableCell (fontPx, color, bold, italic, underline, strike, highlight, alignText, backgroundColor, fontFamily, lineSpacingMultiple)",
       },
       {
         name: "Shape",
@@ -102,7 +102,7 @@ const SECTIONS: Section[] = [
         name: "Chart",
         description: "チャート",
         attributes:
-          "chartType (bar/line/pie/area/doughnut/radar), showLegend, showTitle, title, chartColors, radarStyle / 子要素: Series (name), DataPoint (label, value)",
+          "chartType (bar/line/pie/area/doughnut/radar), showLegend, showTitle, title, chartColors, radarStyle / 子要素: ChartSeries (name), ChartDataPoint (label, value)",
       },
       {
         name: "Timeline",
@@ -114,7 +114,7 @@ const SECTIONS: Section[] = [
         name: "Matrix",
         description: "2x2 マトリクス",
         attributes:
-          "子要素: Axes (x, y), Quadrants (topLeft, topRight, bottomLeft, bottomRight), MatrixItem (label, x, y, color)",
+          "子要素: MatrixAxes (x, y), MatrixQuadrants (topLeft, topRight, bottomLeft, bottomRight), MatrixItem (label, x, y, color)",
       },
       {
         name: "Tree",
@@ -126,13 +126,19 @@ const SECTIONS: Section[] = [
         name: "Flow",
         description: "フローチャート",
         attributes:
-          "direction, nodeWidth, nodeHeight, nodeGap, connectorStyle / 子要素: FlowNode (id, shape, text, color), Connection (from, to, label, color)",
+          "direction, nodeWidth, nodeHeight, nodeGap, connectorStyle / 子要素: FlowNode (id, shape, text, color), FlowConnection (from, to, label, color)",
       },
       {
         name: "ProcessArrow",
         description: "プロセス矢印",
         attributes:
-          "direction, itemWidth, itemHeight, gap, fontPx, bold, italic, strike / 子要素: Step (label, color, textColor)",
+          "direction, itemWidth, itemHeight, gap, fontPx, bold, italic, strike / 子要素: ProcessArrowStep (label, color, textColor)",
+      },
+      {
+        name: "Pyramid",
+        description: "ピラミッド図",
+        attributes:
+          "direction (up/down) / 子要素: PyramidLevel (label, color, textColor)",
       },
     ],
   },

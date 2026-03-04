@@ -22,46 +22,46 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
         <Text fontPx="14" color="FFFFFF" alignText="center" bold="true">主要経営指標（連結）</Text>
       </Box>
       <Table w="max" defaultRowHeight="38">
-        <Column width="140" />
-        <Column width="110" />
-        <Column width="110" />
-        <Column width="80" />
-        <Row>
-          <Cell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">項目</Cell>
-          <Cell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">当期実績</Cell>
-          <Cell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">前年同期</Cell>
-          <Cell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">増減率</Cell>
-        </Row>
-        <Row>
-          <Cell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">売上高</Cell>
-          <Cell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">4,285億円</Cell>
-          <Cell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">3,892億円</Cell>
-          <Cell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+10.1%</Cell>
-        </Row>
-        <Row>
-          <Cell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">営業利益</Cell>
-          <Cell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">512億円</Cell>
-          <Cell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">438億円</Cell>
-          <Cell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+16.9%</Cell>
-        </Row>
-        <Row>
-          <Cell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">経常利益</Cell>
-          <Cell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">498億円</Cell>
-          <Cell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">421億円</Cell>
-          <Cell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+18.3%</Cell>
-        </Row>
-        <Row>
-          <Cell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">当期純利益</Cell>
-          <Cell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">328億円</Cell>
-          <Cell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">276億円</Cell>
-          <Cell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+18.8%</Cell>
-        </Row>
-        <Row>
-          <Cell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">営業利益率</Cell>
-          <Cell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">11.9%</Cell>
-          <Cell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">11.3%</Cell>
-          <Cell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+0.6pt</Cell>
-        </Row>
+        <TableColumn width="140" />
+        <TableColumn width="110" />
+        <TableColumn width="110" />
+        <TableColumn width="80" />
+        <TableRow>
+          <TableCell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">項目</TableCell>
+          <TableCell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">当期実績</TableCell>
+          <TableCell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">前年同期</TableCell>
+          <TableCell fontPx="11" color="FFFFFF" bold="true" alignText="center" backgroundColor="1A1980">増減率</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">売上高</TableCell>
+          <TableCell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">4,285億円</TableCell>
+          <TableCell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">3,892億円</TableCell>
+          <TableCell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+10.1%</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">営業利益</TableCell>
+          <TableCell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">512億円</TableCell>
+          <TableCell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">438億円</TableCell>
+          <TableCell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+16.9%</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">経常利益</TableCell>
+          <TableCell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">498億円</TableCell>
+          <TableCell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">421億円</TableCell>
+          <TableCell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+18.3%</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">当期純利益</TableCell>
+          <TableCell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">328億円</TableCell>
+          <TableCell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">276億円</TableCell>
+          <TableCell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+18.8%</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell fontPx="11" color="0E0D6A" bold="true" backgroundColor="E8EAF6">営業利益率</TableCell>
+          <TableCell fontPx="11" color="1A1A1A" alignText="right" backgroundColor="FFFFFF">11.9%</TableCell>
+          <TableCell fontPx="11" color="5A5A5A" alignText="right" backgroundColor="FFFFFF">11.3%</TableCell>
+          <TableCell fontPx="11" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+0.6pt</TableCell>
+        </TableRow>
       </Table>
       <Box w="max" padding="10" backgroundColor="FFFFFF" border='{"color":"C5CAE9","width":1}'>
         <VStack gap="6">
@@ -98,48 +98,48 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
       </Box>
       <Box w="max" padding="12" backgroundColor="FFFFFF" border='{"color":"C5CAE9","width":1}'>
         <Chart w="480" h="180" chartType="bar" showLegend="true" chartColors='["0E0D6A","5C6BC0"]'>
-          <Series name="売上高（億円）">
-            <DataPoint label="Q1" value="3980" />
-            <DataPoint label="Q2" value="4120" />
-            <DataPoint label="Q3" value="4285" />
-            <DataPoint label="Q4予想" value="4450" />
-          </Series>
-          <Series name="営業利益（億円）">
-            <DataPoint label="Q1" value="465" />
-            <DataPoint label="Q2" value="488" />
-            <DataPoint label="Q3" value="512" />
-            <DataPoint label="Q4予想" value="535" />
-          </Series>
+          <ChartSeries name="売上高（億円）">
+            <ChartDataPoint label="Q1" value="3980" />
+            <ChartDataPoint label="Q2" value="4120" />
+            <ChartDataPoint label="Q3" value="4285" />
+            <ChartDataPoint label="Q4予想" value="4450" />
+          </ChartSeries>
+          <ChartSeries name="営業利益（億円）">
+            <ChartDataPoint label="Q1" value="465" />
+            <ChartDataPoint label="Q2" value="488" />
+            <ChartDataPoint label="Q3" value="512" />
+            <ChartDataPoint label="Q4予想" value="535" />
+          </ChartSeries>
         </Chart>
       </Box>
       <Box w="max" padding="10" backgroundColor="FFFFFF" border='{"color":"C5CAE9","width":1}'>
         <Table w="max" defaultRowHeight="28">
-          <Column width="100" />
-          <Column width="90" />
-          <Column width="90" />
-          <Column width="90" />
-          <Column width="90" />
-          <Row>
-            <Cell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">指標</Cell>
-            <Cell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">Q1</Cell>
-            <Cell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">Q2</Cell>
-            <Cell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">Q3</Cell>
-            <Cell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">通期予想</Cell>
-          </Row>
-          <Row>
-            <Cell fontPx="10" color="0E0D6A" backgroundColor="E8EAF6">売上高成長率</Cell>
-            <Cell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">+8.2%</Cell>
-            <Cell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">+9.5%</Cell>
-            <Cell fontPx="10" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+10.1%</Cell>
-            <Cell fontPx="10" color="E65100" alignText="center" backgroundColor="FFF3E0">+9.8%</Cell>
-          </Row>
-          <Row>
-            <Cell fontPx="10" color="0E0D6A" backgroundColor="E8EAF6">営業利益率</Cell>
-            <Cell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">11.7%</Cell>
-            <Cell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">11.8%</Cell>
-            <Cell fontPx="10" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">11.9%</Cell>
-            <Cell fontPx="10" color="E65100" alignText="center" backgroundColor="FFF3E0">12.0%</Cell>
-          </Row>
+          <TableColumn width="100" />
+          <TableColumn width="90" />
+          <TableColumn width="90" />
+          <TableColumn width="90" />
+          <TableColumn width="90" />
+          <TableRow>
+            <TableCell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">指標</TableCell>
+            <TableCell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">Q1</TableCell>
+            <TableCell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">Q2</TableCell>
+            <TableCell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">Q3</TableCell>
+            <TableCell fontPx="10" color="FFFFFF" bold="true" alignText="center" backgroundColor="3949AB">通期予想</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell fontPx="10" color="0E0D6A" backgroundColor="E8EAF6">売上高成長率</TableCell>
+            <TableCell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">+8.2%</TableCell>
+            <TableCell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">+9.5%</TableCell>
+            <TableCell fontPx="10" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">+10.1%</TableCell>
+            <TableCell fontPx="10" color="E65100" alignText="center" backgroundColor="FFF3E0">+9.8%</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell fontPx="10" color="0E0D6A" backgroundColor="E8EAF6">営業利益率</TableCell>
+            <TableCell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">11.7%</TableCell>
+            <TableCell fontPx="10" color="1A1A1A" alignText="center" backgroundColor="FFFFFF">11.8%</TableCell>
+            <TableCell fontPx="10" color="0D7A3E" bold="true" alignText="center" backgroundColor="E3F2E8">11.9%</TableCell>
+            <TableCell fontPx="10" color="E65100" alignText="center" backgroundColor="FFF3E0">12.0%</TableCell>
+          </TableRow>
         </Table>
       </Box>
     </VStack>
@@ -338,22 +338,22 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
       <VStack gap="8">
         <Text fontPx="14" color="212121" bold="true">棒グラフ — 月別売上推移</Text>
         <Chart w="420" h="200" chartType="bar" showLegend="true" chartColors='["90CAF9","1565C0"]'>
-          <Series name="2024年">
-            <DataPoint label="1月" value="320" />
-            <DataPoint label="2月" value="280" />
-            <DataPoint label="3月" value="350" />
-            <DataPoint label="4月" value="410" />
-            <DataPoint label="5月" value="380" />
-            <DataPoint label="6月" value="420" />
-          </Series>
-          <Series name="2025年">
-            <DataPoint label="1月" value="380" />
-            <DataPoint label="2月" value="340" />
-            <DataPoint label="3月" value="400" />
-            <DataPoint label="4月" value="460" />
-            <DataPoint label="5月" value="440" />
-            <DataPoint label="6月" value="500" />
-          </Series>
+          <ChartSeries name="2024年">
+            <ChartDataPoint label="1月" value="320" />
+            <ChartDataPoint label="2月" value="280" />
+            <ChartDataPoint label="3月" value="350" />
+            <ChartDataPoint label="4月" value="410" />
+            <ChartDataPoint label="5月" value="380" />
+            <ChartDataPoint label="6月" value="420" />
+          </ChartSeries>
+          <ChartSeries name="2025年">
+            <ChartDataPoint label="1月" value="380" />
+            <ChartDataPoint label="2月" value="340" />
+            <ChartDataPoint label="3月" value="400" />
+            <ChartDataPoint label="4月" value="460" />
+            <ChartDataPoint label="5月" value="440" />
+            <ChartDataPoint label="6月" value="500" />
+          </ChartSeries>
         </Chart>
       </VStack>
     </Box>
@@ -361,22 +361,22 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
       <VStack gap="8">
         <Text fontPx="14" color="212121" bold="true">折れ線グラフ — ユーザー数推移</Text>
         <Chart w="420" h="200" chartType="line" showLegend="true" chartColors='["1565C0","FF6F00"]'>
-          <Series name="MAU">
-            <DataPoint label="1月" value="12000" />
-            <DataPoint label="2月" value="14500" />
-            <DataPoint label="3月" value="16200" />
-            <DataPoint label="4月" value="19800" />
-            <DataPoint label="5月" value="22400" />
-            <DataPoint label="6月" value="25000" />
-          </Series>
-          <Series name="DAU">
-            <DataPoint label="1月" value="3200" />
-            <DataPoint label="2月" value="3800" />
-            <DataPoint label="3月" value="4500" />
-            <DataPoint label="4月" value="5200" />
-            <DataPoint label="5月" value="6100" />
-            <DataPoint label="6月" value="7000" />
-          </Series>
+          <ChartSeries name="MAU">
+            <ChartDataPoint label="1月" value="12000" />
+            <ChartDataPoint label="2月" value="14500" />
+            <ChartDataPoint label="3月" value="16200" />
+            <ChartDataPoint label="4月" value="19800" />
+            <ChartDataPoint label="5月" value="22400" />
+            <ChartDataPoint label="6月" value="25000" />
+          </ChartSeries>
+          <ChartSeries name="DAU">
+            <ChartDataPoint label="1月" value="3200" />
+            <ChartDataPoint label="2月" value="3800" />
+            <ChartDataPoint label="3月" value="4500" />
+            <ChartDataPoint label="4月" value="5200" />
+            <ChartDataPoint label="5月" value="6100" />
+            <ChartDataPoint label="6月" value="7000" />
+          </ChartSeries>
         </Chart>
       </VStack>
     </Box>
@@ -386,13 +386,13 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
       <VStack gap="8">
         <Text fontPx="14" color="212121" bold="true">円グラフ — 顧客構成</Text>
         <Chart w="260" h="200" chartType="pie" showLegend="true" chartColors='["1565C0","26A69A","FF6F00","AB47BC","78909C"]'>
-          <Series name="業種別">
-            <DataPoint label="製造業" value="35" />
-            <DataPoint label="IT" value="25" />
-            <DataPoint label="金融" value="20" />
-            <DataPoint label="小売" value="12" />
-            <DataPoint label="その他" value="8" />
-          </Series>
+          <ChartSeries name="業種別">
+            <ChartDataPoint label="製造業" value="35" />
+            <ChartDataPoint label="IT" value="25" />
+            <ChartDataPoint label="金融" value="20" />
+            <ChartDataPoint label="小売" value="12" />
+            <ChartDataPoint label="その他" value="8" />
+          </ChartSeries>
         </Chart>
       </VStack>
     </Box>
@@ -400,13 +400,13 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
       <VStack gap="8">
         <Text fontPx="14" color="212121" bold="true">ドーナツ — 予算配分</Text>
         <Chart w="260" h="200" chartType="doughnut" showLegend="true" chartColors='["1565C0","2E7D32","FF6F00","AB47BC","78909C"]'>
-          <Series name="予算">
-            <DataPoint label="開発" value="40" />
-            <DataPoint label="マーケ" value="20" />
-            <DataPoint label="人件費" value="25" />
-            <DataPoint label="インフラ" value="10" />
-            <DataPoint label="その他" value="5" />
-          </Series>
+          <ChartSeries name="予算">
+            <ChartDataPoint label="開発" value="40" />
+            <ChartDataPoint label="マーケ" value="20" />
+            <ChartDataPoint label="人件費" value="25" />
+            <ChartDataPoint label="インフラ" value="10" />
+            <ChartDataPoint label="その他" value="5" />
+          </ChartSeries>
         </Chart>
       </VStack>
     </Box>
@@ -414,20 +414,20 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
       <VStack gap="8">
         <Text fontPx="14" color="212121" bold="true">レーダー — スキル評価</Text>
         <Chart w="260" h="200" chartType="radar" showLegend="true" chartColors='["1565C0","FF6F00"]'>
-          <Series name="チームA">
-            <DataPoint label="技術" value="90" />
-            <DataPoint label="管理" value="70" />
-            <DataPoint label="企画" value="80" />
-            <DataPoint label="営業" value="60" />
-            <DataPoint label="分析" value="85" />
-          </Series>
-          <Series name="チームB">
-            <DataPoint label="技術" value="75" />
-            <DataPoint label="管理" value="85" />
-            <DataPoint label="企画" value="70" />
-            <DataPoint label="営業" value="80" />
-            <DataPoint label="分析" value="65" />
-          </Series>
+          <ChartSeries name="チームA">
+            <ChartDataPoint label="技術" value="90" />
+            <ChartDataPoint label="管理" value="70" />
+            <ChartDataPoint label="企画" value="80" />
+            <ChartDataPoint label="営業" value="60" />
+            <ChartDataPoint label="分析" value="85" />
+          </ChartSeries>
+          <ChartSeries name="チームB">
+            <ChartDataPoint label="技術" value="75" />
+            <ChartDataPoint label="管理" value="85" />
+            <ChartDataPoint label="企画" value="70" />
+            <ChartDataPoint label="営業" value="80" />
+            <ChartDataPoint label="分析" value="65" />
+          </ChartSeries>
         </Chart>
       </VStack>
     </Box>
@@ -436,24 +436,24 @@ export const SAMPLE_TEMPLATES: SampleTemplate[] = [
     <VStack gap="8">
       <Text fontPx="14" color="212121" bold="true">エリアチャート — トラフィック推移</Text>
       <Chart w="max" h="180" chartType="area" showLegend="true" chartColors='["1565C0","81D4FA"]'>
-        <Series name="オーガニック">
-          <DataPoint label="月" value="4500" />
-          <DataPoint label="火" value="5200" />
-          <DataPoint label="水" value="4800" />
-          <DataPoint label="木" value="5800" />
-          <DataPoint label="金" value="6200" />
-          <DataPoint label="土" value="3200" />
-          <DataPoint label="日" value="2800" />
-        </Series>
-        <Series name="広告">
-          <DataPoint label="月" value="2000" />
-          <DataPoint label="火" value="2400" />
-          <DataPoint label="水" value="2200" />
-          <DataPoint label="木" value="2800" />
-          <DataPoint label="金" value="3100" />
-          <DataPoint label="土" value="1500" />
-          <DataPoint label="日" value="1200" />
-        </Series>
+        <ChartSeries name="オーガニック">
+          <ChartDataPoint label="月" value="4500" />
+          <ChartDataPoint label="火" value="5200" />
+          <ChartDataPoint label="水" value="4800" />
+          <ChartDataPoint label="木" value="5800" />
+          <ChartDataPoint label="金" value="6200" />
+          <ChartDataPoint label="土" value="3200" />
+          <ChartDataPoint label="日" value="2800" />
+        </ChartSeries>
+        <ChartSeries name="広告">
+          <ChartDataPoint label="月" value="2000" />
+          <ChartDataPoint label="火" value="2400" />
+          <ChartDataPoint label="水" value="2200" />
+          <ChartDataPoint label="木" value="2800" />
+          <ChartDataPoint label="金" value="3100" />
+          <ChartDataPoint label="土" value="1500" />
+          <ChartDataPoint label="日" value="1200" />
+        </ChartSeries>
       </Chart>
     </VStack>
   </Box>
