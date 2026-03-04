@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@codemirror/lang-xml": "^6.1.0",
+    "@codemirror/lint": "^6.9.5",
     "@codemirror/state": "^6.5.4",
     "@codemirror/view": "^6.39.15",
     "@hirokisakabe/pom": "^4.0.0",
@@ -21,6 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "codemirror": "^6.0.2",
+    "fast-xml-parser": "^5.4.2",
     "hono": "^4.12.2",
     "lucide-react": "^0.575.0",
     "next": "16.1.6",

@@ -28,8 +28,8 @@ const route = app
         const result = await convertXmlToPreview(xml);
         return c.json(result);
       } catch (e) {
-        const structured = classifyError(e);
-        return c.json({ error: structured }, 400);
+        const errors = classifyError(e, xml);
+        return c.json({ errors }, 400);
       }
     },
   )
@@ -53,8 +53,8 @@ const route = app
         c.header("Content-Disposition", 'attachment; filename="output.pptx"');
         return c.body(buffer);
       } catch (e) {
-        const structured = classifyError(e);
-        return c.json({ error: structured }, 400);
+        const errors = classifyError(e, xml);
+        return c.json({ errors }, 400);
       }
     },
   );

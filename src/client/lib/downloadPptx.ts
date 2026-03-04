@@ -3,25 +3,22 @@ import { honoClient } from "./honoClient";
 interface StructuredError {
   type: string;
   message: string;
+  line?: number;
+  column?: number;
+  tagName?: string;
 }
 
-function isErrorResponse(value: unknown): value is { error: StructuredError } {
-  if (typeof value !== "object" || value === null || !("error" in value)) {
+function isErrorResponse(
+  value: unknown,
+): value is { errors: StructuredError[] } {
+  if (typeof value !== "object" || value === null || !("errors" in value)) {
     return false;
   }
-  const err: unknown = Object.getOwnPropertyDescriptor(value, "error")?.value;
-  if (typeof err !== "object" || err === null) {
-    return false;
-  }
-  if (!("type" in err) || !("message" in err)) {
-    return false;
-  }
-  const typeVal: unknown = Object.getOwnPropertyDescriptor(err, "type")?.value;
-  const msgVal: unknown = Object.getOwnPropertyDescriptor(
-    err,
-    "message",
+  const errors: unknown = Object.getOwnPropertyDescriptor(
+    value,
+    "errors",
   )?.value;
-  return typeof typeVal === "string" && typeof msgVal === "string";
+  return Array.isArray(errors) && errors.length > 0;
 }
 
 export async function downloadPptx(xml: string): Promise<void> {
@@ -35,7 +32,7 @@ export async function downloadPptx(xml: string): Promise<void> {
       const text = await res.text();
       const parsed: unknown = JSON.parse(text);
       if (isErrorResponse(parsed)) {
-        message = parsed.error.message;
+        message = parsed.errors[0].message;
       }
     } catch {
       // JSONパースに失敗した場合はデフォルトメッセージを使用

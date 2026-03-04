@@ -1,5 +1,6 @@
 "use client";
 
+import { EditorView } from "@codemirror/view";
 import { ChevronDown, Download, ExternalLink, RefreshCw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -41,6 +42,7 @@ export function AppLayout() {
   const [pendingTemplate, setPendingTemplate] = useState<SampleTemplate | null>(
     null,
   );
+  const editorViewRef = useRef<EditorView | null>(null);
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const isInitialRenderRef = useRef(true);
@@ -79,8 +81,8 @@ export function AppLayout() {
 
       const data = await res.json();
 
-      if ("error" in data) {
-        setErrors([data.error]);
+      if ("errors" in data) {
+        setErrors(data.errors);
         return;
       }
 
@@ -123,6 +125,23 @@ export function AppLayout() {
       }
     };
   }, [xmlValue]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function handleErrorClick(errorIndex: number) {
+    const view = editorViewRef.current;
+    if (!view || !errors) return;
+
+    const error = errors[errorIndex];
+    if (!error.line) return;
+
+    const line = view.state.doc.line(
+      Math.min(error.line, view.state.doc.lines),
+    );
+    view.dispatch({
+      selection: { anchor: line.from },
+      effects: EditorView.scrollIntoView(line.from, { y: "center" }),
+    });
+    view.focus();
+  }
 
   function handleManualPreview() {
     if (debounceTimerRef.current) {
@@ -216,7 +235,14 @@ export function AppLayout() {
       </header>
       <div className="grid min-h-0 flex-1 grid-cols-2 gap-4 p-4">
         <div className="min-h-0">
-          <XmlEditor value={xmlValue} onChange={setXmlValue} />
+          <XmlEditor
+            value={xmlValue}
+            onChange={setXmlValue}
+            errors={errors}
+            onViewReady={(view) => {
+              editorViewRef.current = view;
+            }}
+          />
         </div>
         <SlidePreview
           svgs={svgs}
@@ -224,6 +250,7 @@ export function AppLayout() {
           errors={errors}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
+          onErrorClick={handleErrorClick}
         />
       </div>
       <AlertDialog
