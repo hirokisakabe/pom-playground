@@ -1,16 +1,41 @@
 "use client";
 
 import { xml } from "@codemirror/lang-xml";
+import type { Diagnostic } from "@codemirror/lint";
+import { lintGutter, setDiagnostics } from "@codemirror/lint";
 import { EditorState } from "@codemirror/state";
-import { basicSetup, EditorView } from "codemirror";
+import { EditorView } from "@codemirror/view";
+import { basicSetup } from "codemirror";
 import { useEffect, useRef } from "react";
+
+import type { StructuredError } from "./SlidePreview";
+
+function errorTypeToSeverity(type: string): Diagnostic["severity"] {
+  switch (type) {
+    case "xml_syntax":
+      return "error";
+    case "schema":
+      return "error";
+    case "structure":
+      return "warning";
+    default:
+      return "info";
+  }
+}
 
 interface XmlEditorProps {
   value: string;
   onChange: (value: string) => void;
+  errors: StructuredError[] | null;
+  onViewReady?: (view: EditorView) => void;
 }
 
-export function XmlEditor({ value, onChange }: XmlEditorProps) {
+export function XmlEditor({
+  value,
+  onChange,
+  errors,
+  onViewReady,
+}: XmlEditorProps) {
   const editorRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorView | null>(null);
   const onChangeRef = useRef(onChange);
@@ -27,6 +52,7 @@ export function XmlEditor({ value, onChange }: XmlEditorProps) {
       extensions: [
         basicSetup,
         xml(),
+        lintGutter(),
         EditorView.updateListener.of((update) => {
           if (update.docChanged) {
             onChangeRef.current(update.state.doc.toString());
@@ -41,6 +67,10 @@ export function XmlEditor({ value, onChange }: XmlEditorProps) {
     });
 
     viewRef.current = view;
+
+    if (onViewReady) {
+      onViewReady(view);
+    }
 
     return () => {
       view.destroy();
@@ -58,6 +88,35 @@ export function XmlEditor({ value, onChange }: XmlEditorProps) {
       });
     }
   }, [value]);
+
+  useEffect(() => {
+    const view = viewRef.current;
+    if (!view) return;
+
+    if (!errors || errors.length === 0) {
+      view.dispatch(setDiagnostics(view.state, []));
+      return;
+    }
+
+    const doc = view.state.doc;
+    const diagnostics: Diagnostic[] = [];
+
+    for (const error of errors) {
+      if (!error.line) continue;
+
+      const lineNum = Math.min(error.line, doc.lines);
+      const line = doc.line(lineNum);
+
+      diagnostics.push({
+        from: line.from,
+        to: line.to,
+        severity: errorTypeToSeverity(error.type),
+        message: error.message,
+      });
+    }
+
+    view.dispatch(setDiagnostics(view.state, diagnostics));
+  }, [errors]);
 
   return (
     <div

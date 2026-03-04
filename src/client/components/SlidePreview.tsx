@@ -11,11 +11,16 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 import { copySvgAsPng } from "../lib/copySvgAsPng";
 
 export interface StructuredError {
   type: string;
   message: string;
+  line?: number;
+  column?: number;
+  tagName?: string;
 }
 
 type CopyStatus = "idle" | "copying" | "success" | "error";
@@ -39,6 +44,7 @@ interface SlidePreviewProps {
   errors: StructuredError[] | null;
   currentPage: number;
   onPageChange: (page: number) => void;
+  onErrorClick?: (errorIndex: number) => void;
 }
 
 export function SlidePreview({
@@ -47,6 +53,7 @@ export function SlidePreview({
   errors,
   currentPage,
   onPageChange,
+  onErrorClick,
 }: SlidePreviewProps) {
   const totalPages = svgs.length;
   const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
@@ -97,7 +104,16 @@ export function SlidePreview({
             {errors.map((error, index) => (
               <li
                 key={index}
-                className="border-destructive/20 bg-destructive/5 flex items-start gap-3 rounded-md border p-3"
+                className={cn(
+                  "border-destructive/20 bg-destructive/5 flex items-start gap-3 rounded-md border p-3",
+                  error.line &&
+                    "hover:bg-destructive/10 cursor-pointer transition-colors",
+                )}
+                onClick={() => {
+                  if (error.line && onErrorClick) {
+                    onErrorClick(index);
+                  }
+                }}
               >
                 <AlertCircle className="text-destructive mt-0.5 size-4 shrink-0" />
                 <div className="min-w-0">
